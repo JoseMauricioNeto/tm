@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino do Mau - Consultoria</title>
+    <style>
+        /* Estilização Geral */
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 15px; }
+        .container { max-width: 450px; margin: auto; background: #1e1e1e; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; }
+        
+        /* Cabeçalho */
+        .header { text-align: center; margin-bottom: 30px; }
+        .logo-text { font-size: 28px; font-weight: bold; color: #007bff; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .aluno-nome { color: #888; font-size: 16px; margin-top: 5px; }
+
+        /* Seções */
+        h2 { font-size: 18px; color: #fff; border-left: 4px solid #007bff; padding-left: 10px; margin-top: 30px; }
+        
+        /* Tabela de Treino */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #252525; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #333; font-size: 14px; }
+        th { background-color: #007bff; color: white; text-transform: uppercase; font-size: 12px; }
+        tr:last-child td { border-bottom: none; }
+
+        /* Evolução */
+        .card-evolucao { background: #252525; padding: 15px; border-radius: 12px; margin-top: 15px; }
+        .progresso-bg { background: #333; border-radius: 10px; height: 10px; margin: 10px 0; }
+        .progresso-bar { background: linear-gradient(90deg, #007bff, #00c6ff); height: 100%; border-radius: 10px; width: 60%; }
+
+        /* Formulário */
+        .campo { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: #bbb; }
+        input, textarea { width: 100%; padding: 12px; background: #2b2b2b; border: 1px solid #444; border-radius: 8px; color: white; font-size: 16px; box-sizing: border-box; }
+        input:focus { border-color: #007bff; outline: none; }
+
+        /* Botão WhatsApp */
+        .btn-whatsapp { width: 100%; background: #25d366; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: 10px; }
+        .btn-whatsapp:hover { background: #1ebd5b; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <p class="logo-text">Treino do Mau</p>
+        <div class="aluno-nome">Área do Aluno: <strong>João Silva</strong></div>
+    </div>
+
+    <h2>🏋️ Treino de Hoje</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Exercício</th>
+                <th>Séries</th>
+                <th>Rep.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Supino Inclinado</td><td>4</td><td>10-12</td></tr>
+            <tr><td>Crucifixo Reto</td><td>3</td><td>15</td></tr>
+            <tr><td>Tríceps Corda</td><td>4</td><td>12</td></tr>
+        </tbody>
+    </table>
+
+    <h2>📈 Sua Evolução</h2>
+    <div class="card-evolucao">
+        <span style="font-size: 14px;">Progresso da Meta: <strong>60%</strong></span>
+        <div class="progresso-bg"><div class="progresso-bar"></div></div>
+        <p style="font-size: 12px; color: #888; margin: 0;">Faltam apenas 2kg para sua meta de Janeiro!</p>
+    </div>
+
+    <h2>📝 Check-in Semanal</h2>
+    <div class="campo">
+        <label>Peso Atual (kg)</label>
+        <input type="number" id="peso" placeholder="00.0" step="0.1">
+    </div>
+    <div class="campo">
+        <label>Feedback do Treino</label>
+        <textarea id="feedback" rows="3" placeholder="Como foi o rendimento hoje?"></textarea>
+    </div>
+
+    <button class="btn-whatsapp" onclick="enviarWhats()">
+        Enviar para o Mau 🚀
+    </button>
+</div>
+
+<script>
+    function enviarWhats() {
+        // --- CONFIGURAÇÃO ---
+        const seuTelefone = "5511999999999"; // Substitua pelo seu número (DDD + Número)
+        const alunoNome = "João Silva"; // Nome do aluno deste arquivo
+        
+        const peso = document.getElementById('peso').value;
+        const feedback = document.getElementById('feedback').value;
+
+        if(!peso) {
+            alert("Por favor, informe seu peso atual.");
+            return;
+        }
+
+        const texto = `🔥 *Treino do Mau - Check-in* \n\n` +
+                      `👤 *Aluno:* ${alunoNome}\n` +
+                      `⚖️ *Peso:* ${peso} kg\n` +
+                      `💬 *Feedback:* ${feedback}`;
+
+        const url = `https://wa.me/${seuTelefone}?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
